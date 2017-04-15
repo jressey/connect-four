@@ -1,12 +1,7 @@
 <div class="board-container">
 	<% board.points.each_slice(7) do |s| %>
 		<% s.each do |point| %>
-		<div id="<%= point.id %>" class="point" data-x="<%= point.x_coord %>" data-y="<%= point.y_coord %>">
-			<div class="point-circle <%= point.state %>">
-				<%= point.x_coord %>,
-				<%= point.y_coord %>
-			</div>
-		</div>
+		<%= render partial: "points/show", locals: { point: point, board: board, player: player }%>
 		<% end %>
 	<% end %>
 </div>

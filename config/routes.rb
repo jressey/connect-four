@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :points
+  resources :points, only: :update
   # resources :boards
   # resources :games
   # resources :players

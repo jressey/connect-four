@@ -13,6 +13,9 @@
 
 .valid_move {
 	border: 3px solid black;
+	&:hover {
+		background-color: #2dc1f5;
+	}
 }
 
 .invalid_move {
