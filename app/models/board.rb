@@ -7,7 +7,8 @@ class Board < ApplicationRecord
   private
 
   	def create_points
-  		(0..5).each do |y|
+      r = 5..0
+  		(r.first).downto(r.last).each.each do |y|
   			(0..6).each do |x|
   				self.points.create(x_coord: x, y_coord: y)
   			end
