@@ -1,8 +1,8 @@
 <div class="board-container">
-	<% board.points.each_slice(7).with_index do |s| %>
+	<% board.points.each_slice(7) do |s| %>
 		<% s.each do |point| %>
-		<div class="point" data-x="<%= point.x_coord %>" data-y="<%= point.y_coord %>">
-			<div class="circleBase empty">
+		<div id="<%= point.id %>" class="point" data-x="<%= point.x_coord %>" data-y="<%= point.y_coord %>">
+			<div class="point-circle <%= point.state %>">
 				<%= point.x_coord %>,
 				<%= point.y_coord %>
 			</div>

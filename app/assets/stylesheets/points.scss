@@ -1,3 +1,28 @@
 // Place all the styles related to the Points controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.point-circle {
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.valid_move {
+	border: 3px solid black;
+}
+
+.invalid_move {
+    border: 3px dashed gray;
+}
+
+.player_1 {
+	background-color: red;
+}
+
+.player_2 {
+	background-color: yellow;
+}

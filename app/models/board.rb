@@ -10,7 +10,9 @@ class Board < ApplicationRecord
       r = 5..0
   		(r.first).downto(r.last).each.each do |y|
   			(0..6).each do |x|
-  				self.points.create(x_coord: x, y_coord: y)
+          params = { x_coord: x, y_coord: y }
+          point = self.points.create(params)
+          point.valid_move! if y == 0 
   			end
   		end
   	end
