@@ -1,8 +1,13 @@
 <div id="player-data">
 	<div id="player-welcome">
 		Submit your name to 'register' or 'login'
+		<br /><br />
 		<%= render partial: 'players/login' %>
 	</div>
 </div>
+<br />
+<div id="game-board"></div>
 <br /><br />
-<%= link_to "Log out, game progress will be lost", root_path %>
+<div>
+	<%= link_to "Log out, game progress will be lost", root_path %>
+</div>
