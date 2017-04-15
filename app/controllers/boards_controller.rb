@@ -1,6 +1,8 @@
 class BoardsController < ApplicationController
 
-	def computer_move
+	def process_gamestate
+		@board = Board.find(params[:id])
+		@board.process_gamestate
 		respond_to do |format|
 			format.js {}
 		end

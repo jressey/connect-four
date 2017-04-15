@@ -5,6 +5,6 @@ $("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javasc
 
 $(".link").hide();
 setTimeout(function(){
-	$.get("<%= root_url + "/boards/#{@point.board.id}/computer_move" %>");
+	$.get("<%= root_url + "/boards/#{@point.board.id}/process_gamestate" %>");
 }, 300);
 // call update point for computer
