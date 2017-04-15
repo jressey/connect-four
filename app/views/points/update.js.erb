@@ -5,6 +5,6 @@ $("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javasc
 
 $(".link").hide();
 setTimeout(function(){
-	$.get("<%= root_url + "/boards/#{@point.board.id}/process_gamestate" %>");
+	$.post("<%= root_url + "/boards/#{@point.board.id}/process_gamestate?last_player_id=#{@point.player.id}" %>");
 }, 300);
 // call update point for computer
