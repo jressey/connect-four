@@ -1,0 +1,11 @@
+<div id="<%= point.x_coord %>_<%= point.y_coord%>" class="point">
+	<%= link_to_if point.valid_move?, 
+		(
+			content_tag :div,  "#{point.x_coord}, #{point.y_coord}", 
+			class: "point-circle " + point.state
+		),
+		point_path(point, player_id: player.id, board_id: board.id), 
+		remote: true, method: :put,
+		class: "link" 
+	%>
+</div>

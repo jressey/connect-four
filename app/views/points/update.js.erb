@@ -1,0 +1,10 @@
+$("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: @point, board: @point.board, player: @point.player }) %>");
+<% if @point.y_coord < 5 %>
+	$("#<%= @point.x_coord %>_<%= @point.y_coord + 1 %>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: @new_valid_point, board: @point.board, player: @point.player }) %>");
+<% end %>
+
+$(".link").hide();
+setTimeout(function(){
+	$.get("<%= root_url + "/boards/#{@point.board.id}/computer_move" %>");
+}, 300);
+// call update point for computer

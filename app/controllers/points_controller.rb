@@ -6,8 +6,7 @@ class PointsController < ApplicationController
 		#this is a hack, should conditionally set state on update by checking games player id and player number (1 or 2)
 		@point.player_1! if params[:player_id]
 
-		@new_valid_point = Point.new_valid_point(@point)
-		puts @new_valid_point.id
+		@new_valid_point = Point.new_valid_point(@point) if @point.y_coord < 5
 	end
 
 	private
