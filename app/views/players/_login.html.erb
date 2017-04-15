@@ -1,0 +1,4 @@
+<%= form_for(Player.new, remote: true, method: :get, url: { controller: "players", action: "create" }) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
