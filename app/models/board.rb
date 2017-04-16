@@ -4,11 +4,10 @@ class Board < ApplicationRecord
 
   after_create :create_points
 
-  def process_gamestate(last_player)
+  def process_gamestate(last_player, played_point)
     #TODO: find a better way to manage last point
-    point = self.latest_point
-    board_analyzer = BoardAnalyzer.new(self, point, last_player)
-    # check for winner return win message
+    board_analyzer = BoardAnalyzer.new(self, played_point, last_player)
+    return "winner" if board_analyzer.winning_position?
     # if non, generate computer move
       # check for blocking position
       # select randomly
@@ -16,7 +15,7 @@ class Board < ApplicationRecord
     puts 'got here'
   end
 
-  def latest_point
+  def new_valid_point
     self.points.order("updated_at").last
   end
 

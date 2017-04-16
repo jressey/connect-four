@@ -9,7 +9,7 @@ class BoardAnalyzer
 	end
 	
 	def winning_position?
-		return false if @board.points.player_1.size + @board.points.player_2.size < 8
+		# return false if @board.points.player_1.size + @board.points.player_2.size < 8
 		return true if horizontal_winning_position?
 		return true if vertical_winning_position?
 		return true if diagonal_winning_position?
@@ -17,13 +17,11 @@ class BoardAnalyzer
 	end
 
 	def horizontal_winning_position?
-		# check left and right, if sum >= then win
 		total_left = 0
 		total_right = 0
 
 		total_left = @x == 0 ? 0 : check_left
 		total_right = @x == 6 ? 0 : check_right
-
 		return true if total_left + total_right >= 3
 		return false
 	end
@@ -188,7 +186,7 @@ class BoardAnalyzer
 			p = @board.points.where(x_coord: @x + 1).where(y_coord: @y - 1).first.player
 			if (p.present? && p == @player)
 				total += 1
-				if @x + 2 >= 0  && @y - 2 >= 0
+				if @x + 2 >= 0 && @y - 2 >= 0
 					p = @board.points.where(x_coord: @x + 2).where(y_coord: @y - 2).first.player
 					if (p.present? && p == @player)
 				 		total += 1

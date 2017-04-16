@@ -4,7 +4,4 @@ $("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javasc
 <% end %>
 
 $(".link").hide();
-setTimeout(function(){
-	$.post("<%= root_url + "/boards/#{@point.board.id}/process_gamestate?last_player_id=#{@point.player.id}" %>");
-}, 300);
-// call update point for computer
+$.post("<%= root_url + "/boards/#{@point.board.id}/process_gamestate?last_player_id=#{@point.player.id}&last_played_point_id=#{@point.id}" %>");
