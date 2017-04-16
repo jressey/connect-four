@@ -1,0 +1,15 @@
+<%= form_tag(game_path(game.id), method: :put, remote: true) do%>
+  <div>
+    <%= label_tag "Player 1" %><br>
+    <%= text_field_tag :player_one_name %>
+  </div>
+  <% if game.two_player? %>
+  	<div>
+  		<%= label_tag "Player 2" %><br>
+    	<%= text_field_tag :player_two_name %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= submit_tag "Start Game"  %>
+  </div>
+<%end%>

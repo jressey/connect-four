@@ -1,9 +1,6 @@
-<div id="player-data">
-	<div id="player-welcome">
-		Submit your name to 'register' or 'login'
-		<br /><br />
-		<%= render partial: 'players/login' %>
-	</div>
+<div id="game-select">
+	<%= link_to "1 player game", new_game_path(gametype: :one_player), remote: true %>
+	<%= link_to "2 player game", new_game_path(gametype: :two_player), remote: true  %>
 </div>
 <br />
 <div id="game-board"></div>

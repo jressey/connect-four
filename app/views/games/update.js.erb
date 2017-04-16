@@ -1,0 +1,2 @@
+$("#game-select").html("<%= escape_javascript(render partial: "players/status", locals: { player_1: @game.player_1, player_2: @game.player_2 }) %>");
+$("#game-board").html("<%= escape_javascript(render partial: "boards/show", locals: { board: @board, player: @game.player_1}) %>");
