@@ -3,4 +3,5 @@ $("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javasc
 	$("#<%= @point.x_coord %>_<%= @point.y_coord + 1 %>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: @new_valid_point, board: @point.board, player: @point.player }) %>");
 <% end %>
 $(".link").hide();
+
 $.post("<%= root_url + "/boards/#{@point.board.id}/process_gamestate?last_player_id=#{@point.player.id}&last_played_point_id=#{@point.id}" %>");

@@ -7,7 +7,7 @@ class Board < ApplicationRecord
   def process_gamestate(last_player, played_point)
     #TODO: find a better way to manage last point
     board_analyzer = BoardAnalyzer.new(self, played_point, last_player)
-    return "player winner" if board_analyzer.winning_position?
+    return board_analyzer.winning_position?
   end
 
   def generate_computer_move(last_player)
