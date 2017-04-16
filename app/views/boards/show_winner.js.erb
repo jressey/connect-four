@@ -1,1 +1,2 @@
+$("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: @point, board: @point.board, player: @point.player }) %>");
 $("#player-status").append("<br /><br /><%= @player.name %> wins");

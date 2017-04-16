@@ -8,5 +8,6 @@ $("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javasc
 		<% @point.board.points.valid_move.each do |p| %>
 			$("#<%= p.x_coord %>_<%= p.y_coord %>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: p, board: p.board, player: p.board.game.opponent_of(@point.player) }) %>");
 		<% end %> 
+		$("#<%= @point.x_coord %>_<%= @point.y_coord + 1%>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: @new_valid_point, board: @point.board, player: @point.board.game.opponent_of(@point.player) }) %>");
 	<% end %>
 <% end %>
