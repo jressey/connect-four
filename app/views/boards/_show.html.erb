@@ -1,5 +1,6 @@
 <div class="board-container">
-	<% board.points.each_slice(7) do |s| %>
+	<% points = board.points.sort_by { |x| x.id } %>
+	<% points.each_slice(7) do |s| %>
 		<% s.each do |point| %>
 		<%= render partial: "points/show", locals: { point: point, board: board, player: player }%>
 		<% end %>

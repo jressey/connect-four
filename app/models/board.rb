@@ -5,7 +5,6 @@ class Board < ApplicationRecord
   after_create :create_points
 
   def process_gamestate(last_player, played_point)
-    #TODO: find a better way to manage last point
     board_analyzer = BoardAnalyzer.new(self, played_point, last_player)
     return board_analyzer.winning_position?
   end
