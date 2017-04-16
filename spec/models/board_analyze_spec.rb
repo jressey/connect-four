@@ -3,16 +3,6 @@ require 'rails_helper'
 RSpec.describe BoardAnalyzer do
   	let!(:player) { FactoryGirl.create(:player) }
   	let!(:board) { FactoryGirl.create(:board) }
-  	# describe '#check_if_point_is_winner' do
-  		
-  	# 	context 'board with fewer than 7 points' do 
-	  # 		it 'returns false if there are fewer than 7 points on the board' do
-	  # 			set_fewer_than_seven_points
-	  # 			board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
-	  # 			expect(board_analyzer.winning_position?).to_not be
-	  # 		end  		
-  	# 	end
-  	# end
 
   	describe '#check_for_horizontal_winner' do
 
