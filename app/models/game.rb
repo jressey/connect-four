@@ -7,6 +7,11 @@ class Game < ApplicationRecord
 	before_create :set_computer_player
 	after_create :create_board
 
+	def opponent_of(player)
+		return player_2 if player == player_1
+		return player_1 if player == player_2
+	end
+
 	private
 
 		def set_computer_player

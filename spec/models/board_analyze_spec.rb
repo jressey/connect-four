@@ -8,7 +8,7 @@ RSpec.describe BoardAnalyzer do
   	# 	context 'board with fewer than 7 points' do 
 	  # 		it 'returns false if there are fewer than 7 points on the board' do
 	  # 			set_fewer_than_seven_points
-	  # 			board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+	  # 			board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
 	  # 			expect(board_analyzer.winning_position?).to_not be
 	  # 		end  		
   	# 	end
@@ -18,7 +18,7 @@ RSpec.describe BoardAnalyzer do
 
   		context 'no instance of 4 in a row' do 
   			it 'returns false' do 
-  				board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+  				board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
 	  			expect(board_analyzer.horizontal_winning_position?).to_not be
   			end
   		end
@@ -26,7 +26,7 @@ RSpec.describe BoardAnalyzer do
   		context 'new point is 4th in a row on right' do
   			it 'returns true if p_1 point is in 4 in a row horizontally on right end' do
   				set_four_horizontal_from_left
-  				board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+  				board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
 	  			expect(board_analyzer.horizontal_winning_position?).to be
   			end
   		end
@@ -34,7 +34,7 @@ RSpec.describe BoardAnalyzer do
   		context 'new point is 4th in a row on left' do
 	  		it 'returns true if p_1 point is in 4 in a row horizontally on left end' do
 	  			set_four_horizontal_from_right
-				board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+				board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
 	  			expect(board_analyzer.horizontal_winning_position?).to be
 	  		end
   		end
@@ -42,7 +42,7 @@ RSpec.describe BoardAnalyzer do
   		context 'new point is 4th is second from right of 4 in a row' do
 	  		it 'returns true if p_1 point is in 4 in a row horizontally on left end' do
 	  			set_four_non_contiguosly
-				board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+				board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
 	  			expect(board_analyzer.horizontal_winning_position?).to be
 	  		end
   		end
@@ -53,7 +53,7 @@ RSpec.describe BoardAnalyzer do
 
   			it 'returns false' do 
   				set_points_vertically_in_rows_0_to_2
-  				board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+  				board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
   				expect(board_analyzer.vertical_winning_position?).to_not be
   			end
   		end
@@ -62,7 +62,7 @@ RSpec.describe BoardAnalyzer do
 
   			it 'returns true' do 
   				set_points_vertically_in_row_0_to_3
-  				board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+  				board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
   				expect(board_analyzer.vertical_winning_position?).to be
   			end
   		end
@@ -71,25 +71,25 @@ RSpec.describe BoardAnalyzer do
   	describe '#check_diagonal_winner' do
 		it 'returns true if p_1 point is in 4 in a row diagonally from nw to se' do
 			set_4_points_diagonally_from_nw_to_se
-			board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+			board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
   			expect(board_analyzer.diagonal_winning_position?).to be
 		end
 
-		it 'returns true if p_1 point is in 4 in a row diagonally from sw to ne but last placed in middle' do
+		it 'returns true if p_1 point is in 4 in a row diagonally from nw to se but last placed in middle' do
 			set_4_points_diagonally_from_nw_to_se_with_middle_point_last
-			board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+			board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
   			expect(board_analyzer.diagonal_winning_position?).to be
 		end
 
 		it 'returns true if p_1 point is in 4 in a row diagonally from ne to sw' do
 			set_4_points_diagonally_from_ne_to_sw
-			board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+			board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
   			expect(board_analyzer.diagonal_winning_position?).to be
 		end
 
-		it 'returns true if p_1 point is in 4 in a row diagonally from se to nw but last placed in middle' do
+		it 'returns true if p_1 point is in 4 in a row diagonally from ne to sw but last placed in middle' do
 			set_4_points_diagonally_from_ne_to_sw_with_middle_point_last
-			board_analyzer = BoardAnalyzer.new(board, board.latest_point, player)
+			board_analyzer = BoardAnalyzer.new(board, board.new_valid_point, player)
   			expect(board_analyzer.diagonal_winning_position?).to be
 		end
   	end

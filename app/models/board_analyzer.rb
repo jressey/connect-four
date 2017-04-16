@@ -9,7 +9,7 @@ class BoardAnalyzer
 	end
 	
 	def winning_position?
-		# return false if @board.points.player_1.size + @board.points.player_2.size < 8
+		return false if @board.points.player_1.size + @board.points.player_2.size < 8
 		return true if horizontal_winning_position?
 		return true if vertical_winning_position?
 		return true if diagonal_winning_position?
@@ -136,16 +136,16 @@ class BoardAnalyzer
 
 	def check_top_right
 		total = 0
-		if @x + 1 >= 0 && @y + 1 >= 0
+		if @x + 1 <= 6 && @y + 1 <= 5
 			p = @board.points.where(x_coord: @x + 1).where(y_coord: @y + 1).first.player
 			if (p.present? && p == @player)
 				total += 1
-				if @x + 2 >= 0  && @y + 2 >= 0
+				if @x + 2 <= 6  && @y + 2 <= 5
 					p = @board.points.where(x_coord: @x + 2).where(y_coord: @y + 2).first.player
 					if (p.present? && p == @player)
 				 		total += 1
 					end
-					if @x + 3 >= 0 && @y + 3 >= 0
+					if @x + 3 <= 6 && @y + 3 <= 5
 						p = @board.points.where(x_coord: @x + 3).where(y_coord: @y + 3).first.player
 						if (p.present? && p == @player)
 				 			total += 1
@@ -159,16 +159,16 @@ class BoardAnalyzer
 
 	def check_top_left
 		total = 0
-		if @x - 1 >= 0 && @y + 1 >= 0
+		if @x - 1 >= 0 && @y + 1 <= 5
 			p = @board.points.where(x_coord: @x - 1).where(y_coord: @y + 1).first.player
 			if (p.present? && p == @player)
 				total += 1
-				if @x - 2 >= 0  && @y + 2 >= 0
+				if @x - 2 >= 0  && @y + 2 <= 5
 					p = @board.points.where(x_coord: @x - 2).where(y_coord: @y + 2).first.player
 					if (p.present? && p == @player)
 				 		total += 1
 					end
-					if @x - 3 >= 0 && @y + 3 >= 0
+					if @x - 3 >= 0 && @y + 3 <= 5
 						p = @board.points.where(x_coord: @x - 3).where(y_coord: @y + 3).first.player
 						if (p.present? && p == @player)
 				 			total += 1
@@ -182,16 +182,16 @@ class BoardAnalyzer
 
 	def check_bottom_right
 		total = 0
-		if @x + 1 >= 0 && @y - 1 >= 0
+		if @x + 1 <= 6 && @y - 1 >= 0
 			p = @board.points.where(x_coord: @x + 1).where(y_coord: @y - 1).first.player
 			if (p.present? && p == @player)
 				total += 1
-				if @x + 2 >= 0 && @y - 2 >= 0
+				if @x + 2 <= 6 && @y - 2 >= 0
 					p = @board.points.where(x_coord: @x + 2).where(y_coord: @y - 2).first.player
 					if (p.present? && p == @player)
 				 		total += 1
 					end
-					if @x + 3 >= 0 && @y - 3 >= 0
+					if @x + 3 <= 6 && @y - 3 >= 0
 						p = @board.points.where(x_coord: @x + 3).where(y_coord: @y - 3).first.player
 						if (p.present? && p == @player)
 				 			total += 1

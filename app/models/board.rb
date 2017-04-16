@@ -7,12 +7,15 @@ class Board < ApplicationRecord
   def process_gamestate(last_player, played_point)
     #TODO: find a better way to manage last point
     board_analyzer = BoardAnalyzer.new(self, played_point, last_player)
-    return "winner" if board_analyzer.winning_position?
-    # if non, generate computer move
-      # check for blocking position
-      # select randomly
-      # update point for computer, return
-    puts 'got here'
+    return "player winner" if board_analyzer.winning_position?
+  end
+
+  def generate_computer_move(last_player)
+    computer_point = GameBrain.select_computer_point(self)
+    puts computer_point
+    computer_point.player_2!
+    computer_point.update_attribute(:player, self.game.opponent_of(last_player))
+    return computer_point
   end
 
   def new_valid_point
