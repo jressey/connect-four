@@ -9,7 +9,6 @@ class BoardAnalyzer
 	end
 	
 	def winning_position?
-		return false if @board.points.player_1.size + @board.points.player_2.size < 8
 		return true if horizontal_winning_position?
 		return true if vertical_winning_position?
 		return true if diagonal_winning_position?

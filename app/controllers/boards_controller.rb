@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
 	      	end
 	    else
 	    	@computer_point = @board.generate_computer_move(@player)
-	    	# byebug
+	    	# @computer_won = @board.process_gamestate(@computer_point.player, @computer_point) == "computer winner"
 	    	@new_valid_point = Point.new_valid_point(@computer_point)
 	    end
 	end
