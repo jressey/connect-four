@@ -24,9 +24,9 @@ class Board < ApplicationRecord
   private
 
   	def create_points
-      r = 5..0
+      r = BoardDetails::Height - 1..0
   		(r.first).downto(r.last).each do |y|
-  			(0..6).each do |x|
+  			(0..BoardDetails::Width - 1).each do |x|
           point = self.points.create({ x_coord: x, y_coord: y })
           point.valid_move! if y == 0 
   			end
