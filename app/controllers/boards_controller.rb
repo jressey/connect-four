@@ -12,6 +12,7 @@ class BoardsController < ApplicationController
 	    else
 	    	@computer_point = @board.generate_computer_move(@player)
 	    	@computer_won = @board.process_gamestate(@computer_point.player, @computer_point)
+			@tie = @board.tie?
 	    	if !@computer_won
 	    		@new_valid_point = Point.new_valid_point(@computer_point)
 	    	end

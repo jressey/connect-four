@@ -13,6 +13,13 @@ class PointsController < ApplicationController
 	        	format.js { render template: "boards/show_winner" }
 	      	end
 		end
+
+		@board = @point.board
+		if @board.tie?
+			respond_to do |format|
+	        	format.js { render template: "boards/show_tie" }
+	      	end
+		end
 	
 		@new_valid_point = Point.new_valid_point(@point) if @point.y_coord < 5
 	end

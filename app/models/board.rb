@@ -21,6 +21,10 @@ class Board < ApplicationRecord
     self.points.order("updated_at").last
   end
 
+  def tie?
+    points.player_1.size + points.player_2.size == BoardDetails::Width * BoardDetails::Height
+  end
+
   private
 
   	def create_points

@@ -1,6 +1,8 @@
 $("#<%= @computer_point.x_coord %>_<%= @computer_point.y_coord %>").replaceWith("<%= escape_javascript(render partial: "points/show", locals: { point: @computer_point, board: @computer_point.board, player: @computer_point.player }) %>");
 <% if @computer_won %>
-$("#player-status").append("<br /><br /><span class=\"winner\">Computer wins!</span>");
+	$("#player-status").append("<br /><br /><span class=\"winner\">Computer wins!</span>");
+<% elsif @tie %>
+	$("#player-status").append("<br /><br /><span class=\"winner\">Tie Game!</span>");
 <% else %>
 	<% if @computer_point.present? && @computer_point.y_coord < 5 %>
 		$("#<%= @computer_point.x_coord %>_<%= @computer_point.y_coord + 1 %>").replaceWith("<%= escape_javascript(render partial: "points/show", locals: { point: @new_valid_point, board: @computer_point.board, player: @computer_point.board.game.player_1 }) %>");
