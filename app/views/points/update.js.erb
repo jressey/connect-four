@@ -6,6 +6,13 @@ $("#<%= @point.x_coord %>_<%= @point.y_coord %>").replaceWith("<%= escape_javasc
 	$(".link").hide();
 	$.post("<%= root_url + "/boards/#{@point.board.id}/process_gamestate?last_player_id=#{@point.player.id}&last_played_point_id=#{@point.id}" %>");
 <% else %>
+	<% if @point.player_1? %>
+		$("#player-1-turn-indicator").html("");
+		$("#player-2-turn-indicator").html(" Your turn");
+	<% else %>
+		$("#player-1-turn-indicator").html(" Your turn");
+		$("#player-2-turn-indicator").html("");
+	<% end %> 
 	<% @point.board.points.valid_move.each do |p| %>
 		$("#<%= p.x_coord %>_<%= p.y_coord %>").replaceWith("<%= escape_javascript(render partial: "show", locals: { point: p, board: p.board, player: p.board.game.opponent_of(@point.player) }) %>");
 	<% end %> 
